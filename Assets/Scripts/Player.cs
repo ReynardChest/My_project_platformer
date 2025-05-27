@@ -19,6 +19,12 @@ public class Player : MonoBehaviour, IDamagable
         
     }
 
+    private void OnDestroy()
+    {
+        _inputService.Moved -= _playerMovement.Move;
+        _inputService.Jumped -= _playerMovement.Jump;
+    }
+
     private void Update()
     {
         _playerMovement.OnUpdate();
